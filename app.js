@@ -41,11 +41,11 @@ function renderFatalError(message) {
 
 function bootstrap() {
   try {
-    if (!Array.isArray(globalThis.WORDS)) {
+    if (typeof WORDS === 'undefined' || !Array.isArray(WORDS)) {
       throw new Error('data.js 載入失敗，WORDS 資料不存在');
     }
 
-    words = globalThis.WORDS.map(w => ({ ...w }));
+    words = WORDS.map(w => ({ ...w }));
     init();
   } catch (error) {
     console.error(error);
