@@ -1,0 +1,12 @@
+# Python 暫存
+*.pyc
+__pycache__/
+*.py
+
+# 系統檔
+.DS_Store
+Thumbs.db
+
+# 編輯器
+.vscode/
+.idea/

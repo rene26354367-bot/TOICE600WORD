@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#faf8f3" />
+  <title>多益 600 單字</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<div id="app">
+
+  <!-- 頂部標題 + 進度條 -->
+  <header class="app-header">
+    <div class="app-title">多益 600 單字</div>
+    <div class="progress-wrap">
+      <div class="progress-bar-track">
+        <div class="progress-bar-fill" id="progressFill" style="width: 0%"></div>
+      </div>
+      <div class="progress-label" id="progressLabel">已背過 0 / 0</div>
+    </div>
+  </header>
+
+  <!-- 分頁列 -->
+  <nav class="tab-bar">
+    <button class="tab-btn active" id="tabWordlist" onclick="switchTab('wordlist')">單字列表</button>
+    <button class="tab-btn" id="tabQuiz" onclick="switchTab('quiz')">測　　驗</button>
+  </nav>
+
+  <!-- 單字列表分頁 -->
+  <section class="tab-content active" id="pageWordlist">
+    <div class="filter-bar">
+      <button class="filter-btn active" onclick="setFilter('全部')">全部</button>
+      <button class="filter-btn" onclick="setFilter('A2')">A2</button>
+      <button class="filter-btn" onclick="setFilter('B1')">B1</button>
+      <button class="filter-btn" onclick="setFilter('常見')">常見</button>
+    </div>
+    <div class="word-list" id="wordList"></div>
+  </section>
+
+  <!-- 測驗分頁 -->
+  <section class="tab-content" id="pageQuiz">
+    <div class="quiz-wrap" id="quizWrap"></div>
+  </section>
+
+</div>
+
+<!-- 詳細資訊 Modal -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-word" id="modalWord"></div>
+    <div class="modal-pos" id="modalPos"></div>
+
+    <div class="modal-section-label">中文定義</div>
+    <div class="modal-definition" id="modalDefinition"></div>
+
+    <div class="modal-section-label" id="modalSynLabel" style="display:none">同義詞</div>
+    <div class="modal-synonyms" id="modalSynonyms"></div>
+
+    <div class="modal-section-label" id="modalAntLabel" style="display:none">反義詞</div>
+    <div class="modal-antonyms" id="modalAntonyms"></div>
+
+    <div class="modal-actions">
+      <button class="btn btn-close" onclick="closeModal()">關　閉</button>
+      <button class="btn btn-mastered" id="modalMasteredBtn" onclick="toggleMasteredFromModal()">
+        已背過
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- 依序載入資料與應用程式邏輯 -->
+<script src="data.js"></script>
+<script src="app.js"></script>
+
+</body>
+</html>

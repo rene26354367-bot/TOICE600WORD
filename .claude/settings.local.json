@@ -1,0 +1,9 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(powershell.exe -Command \"node -e \"\"const fs=require\\(''fs''\\);const content=fs.readFileSync\\(''C:/Users/user/Desktop/CLAUD CODE专案区域/TOICE600WORD/data.js'',''utf8''\\);try{eval\\(content\\);console.log\\(''OK:''+WORDS.length\\);}catch\\(e\\){console.log\\(''ERR:''+e.message\\);}\"\"\")",
+      "Bash(pip install:*)",
+      "Bash(python -c \"import nltk; nltk.download\\(''wordnet'', quiet=True\\); nltk.download\\(''omw-1.4'', quiet=True\\); from nltk.corpus import wordnet; print\\(''OK''\\)\")"
+    ]
+  }
+}
