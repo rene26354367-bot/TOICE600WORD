@@ -6,8 +6,6 @@
 // 格式維持一致即可，程式會動態讀取整個陣列。
 
 const WORDS = [
-  
-
   { "id": 1, "word": "a few", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "A2", "definition": "一些", "mastered": false },
   { "id": 2, "word": "a little", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "A2", "definition": "一些", "mastered": false },
   { "id": 3, "word": "a lot of", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "A2", "definition": "許多", "mastered": false },
