@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>data test</title>
+</head>
+<body>
+  <pre id="out">loading...</pre>
+  <script>
+    const out = document.getElementById('out');
+    window.addEventListener('error', (event) => {
+      out.textContent = `window error: ${event.message} @ ${event.filename}:${event.lineno}:${event.colno}`;
+    });
+  </script>
+  <script
+    src="data.js"
+    onload="document.getElementById('out').textContent = 'loaded: ' + (Array.isArray(window.WORDS) ? window.WORDS.length : typeof window.WORDS)"
+    onerror="document.getElementById('out').textContent = 'script load error: data.js'"></script>
+</body>
+</html>

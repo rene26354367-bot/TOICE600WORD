@@ -6,7 +6,7 @@
 const LS_KEY = 'toeic_mastered'; // localStorage 鍵值
 
 // 工作陣列：從 data.js 的 WORDS 深複製一份
-let words = WORDS.map(w => ({ ...w }));
+let words = [];
 
 // 目前在 Modal 中顯示的單字 id
 let activeWordId = null;
@@ -27,6 +27,30 @@ function init() {
   loadMastered();
   renderProgress();
   renderWordList();
+}
+
+function renderFatalError(message) {
+  const progressLabel = document.getElementById('progressLabel');
+  const wordList = document.getElementById('wordList');
+
+  if (progressLabel) progressLabel.textContent = '載入失敗';
+  if (wordList) {
+    wordList.innerHTML = `<div class="notice"><strong>${escHtml(message)}</strong></div>`;
+  }
+}
+
+function bootstrap() {
+  try {
+    if (!Array.isArray(globalThis.WORDS)) {
+      throw new Error('data.js 載入失敗，WORDS 資料不存在');
+    }
+
+    words = globalThis.WORDS.map(w => ({ ...w }));
+    init();
+  } catch (error) {
+    console.error(error);
+    renderFatalError(error && error.message ? error.message : '初始化失敗');
+  }
 }
 
 /* ===========================
@@ -295,4 +319,4 @@ function escAttr(str) {
 /* ===========================
    啟動
    =========================== */
-init();
+bootstrap();
