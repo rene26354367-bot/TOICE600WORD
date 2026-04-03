@@ -902,7 +902,7 @@ const WORDS = [
   { "id": 894, "word": "your", "synonyms": "", "antonyms": "", "pos": "", "category": "常見", "definition": "你的", "mastered": false },
   { "id": 895, "word": "zero", "synonyms": "0, aught, cipher", "antonyms": "", "pos": "n.", "category": "A2", "definition": "零", "mastered": false },
   { "id": 896, "word": "zone", "synonyms": "district, geographical zone, partition", "antonyms": "", "pos": "n.", "category": "A2", "definition": "區域;地區", "mastered": false },
-  { "id": 897, "word": "zoo", "synonyms": "menagerie, zoological garden", "antonyms": "", "pos": "n.", "category": "A2", "definition": "動物園", "mastered": false }
+  { "id": 897, "word": "zoo", "synonyms": "menagerie, zoological garden", "antonyms": "", "pos": "n.", "category": "A2", "definition": "動物園", "mastered": false },
   { "id": 898, "word": "accommodation", "synonyms": "adjustment, fitting", "antonyms": "", "pos": "n.", "category": "B1", "definition": "食宿", "mastered": false },
   { "id": 899, "word": "accomplishment", "synonyms": "achievement, acquirement, acquisition", "antonyms": "", "pos": "n.", "category": "B1", "definition": "成就", "mastered": false },
   { "id": 900, "word": "alternative", "synonyms": "alternate, choice, option", "antonyms": "", "pos": "", "category": "B1", "definition": "可替代的;兩者擇一", "mastered": false },
@@ -969,7 +969,7 @@ const WORDS = [
   { "id": 961, "word": "subject to", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "A2", "definition": "易受...的影響", "mastered": false },
   { "id": 962, "word": "submit", "synonyms": "accede, bow, defer", "antonyms": "", "pos": "v.", "category": "B1", "definition": "提交;呈遞", "mastered": false },
   { "id": 963, "word": "subscribe", "synonyms": "pledge, sign, subscribe to", "antonyms": "", "pos": "v.", "category": "常見", "definition": "訂閱", "mastered": false },
-  { "id": 1000, "word": "supervision", "synonyms": "oversight, superintendence, supervising", "antonyms": "", "pos": "n.", "category": "常見", "definition": "監督;管理", "mastered": false }
+  { "id": 1000, "word": "supervision", "synonyms": "oversight, superintendence, supervising", "antonyms": "", "pos": "n.", "category": "常見", "definition": "監督;管理", "mastered": false },
   { "id": 1001, "word": "a game of cat and mouse", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "常見", "definition": "貓捉老鼠遊戲", "mastered": false },
   { "id": 1002, "word": "a leap of faith", "synonyms": "", "antonyms": "", "pos": "phr.", "category": "常見", "definition": "放手一搏", "mastered": false },
   { "id": 1003, "word": "aboard", "synonyms": "alongside, on base, on board", "antonyms": "", "pos": "adv.", "category": "常見", "definition": "船上", "mastered": false },
@@ -2624,7 +2624,7 @@ const WORDS = [
   { "id": 2652, "word": "isolation", "synonyms": "closing off", "antonyms": "", "pos": "n.", "category": "常見", "definition": "隔離", "mastered": false },
   { "id": 2653, "word": "issue", "synonyms": "bring out, come forth, come out", "antonyms": "recall", "pos": "n.", "category": "常見", "definition": "議題/發行", "mastered": false },
   { "id": 2654, "word": "item", "synonyms": "detail, particular, point", "antonyms": "", "pos": "n.", "category": "常見", "definition": "項目/一件物品", "mastered": false },
-  { "id": 2655, "word": "itinerary", "synonyms": "path, route, travel guidebook", "antonyms": "", "pos": "n.", "category": "常見", "definition": "行程表", "mastered": false }
+  { "id": 2655, "word": "itinerary", "synonyms": "path, route, travel guidebook", "antonyms": "", "pos": "n.", "category": "常見", "definition": "行程表", "mastered": false },
   { "id": 2656, "word": "jail", "synonyms": "clink, gaol, immure", "antonyms": "", "pos": "n.", "category": "常見", "definition": "監獄", "mastered": false },
   { "id": 2657, "word": "jam", "synonyms": "block, chock up, close up", "antonyms": "free", "pos": "v.", "category": "常見", "definition": "果醬/擁擠", "mastered": false },
   { "id": 2658, "word": "janitor", "synonyms": "", "antonyms": "", "pos": "n.", "category": "常見", "definition": "管理員/工友", "mastered": false },
@@ -2809,7 +2809,7 @@ const WORDS = [
   { "id": 2837, "word": "literal", "synonyms": "actual, erratum, genuine", "antonyms": "figurative", "pos": "", "category": "常見", "definition": "文字的/照字面的", "mastered": false },
   { "id": 2838, "word": "literary", "synonyms": "", "antonyms": "", "pos": "", "category": "常見", "definition": "文學的", "mastered": false },
   { "id": 2839, "word": "literate", "synonyms": "literate person", "antonyms": "illiterate", "pos": "adj.", "category": "常見", "definition": "有讀寫能力的", "mastered": false },
-  { "id": 2840, "word": "literature", "synonyms": "lit", "antonyms": "", "pos": "n.", "category": "常見", "definition": "文學", "mastered": false }
+  { "id": 2840, "word": "literature", "synonyms": "lit", "antonyms": "", "pos": "n.", "category": "常見", "definition": "文學", "mastered": false },
   { "id": 2841, "word": "madam", "synonyms": "brothel keeper, dame, gentlewoman", "antonyms": "", "pos": "n.", "category": "常見", "definition": "裝配", "mastered": false },
   { "id": 2842, "word": "magical", "synonyms": "charming, magic, sorcerous", "antonyms": "", "pos": "", "category": "常見", "definition": "神奇", "mastered": false },
   { "id": 2843, "word": "magnificent", "synonyms": "brilliant, glorious, splendid", "antonyms": "", "pos": "", "category": "常見", "definition": "壯麗", "mastered": false },
