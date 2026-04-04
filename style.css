@@ -31,6 +31,8 @@
 html, body {
   height: 100%;
   background: var(--bg);
+  background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="200" height="200"><defs><filter id="wood"><feTurbulence type="fractalNoise" baseFrequency="0.05" numOctaves="4" seed="1"/></filter></defs><rect width="200" height="200" fill="%23faf8f3"/><rect width="200" height="200" fill="%23c9a878" opacity="0.06" filter="url(%23wood)"/></svg>');
+  background-attachment: fixed;
   color: var(--text-primary);
   font-family: 'Noto Sans JP', 'Noto Serif JP', sans-serif;
   font-size: 15px;
@@ -241,8 +243,9 @@ html, body {
   inset: 0;
   background: rgba(26, 26, 26, 0.45);
   z-index: 100;
-  align-items: flex-end;
+  align-items: flex-start;
   justify-content: center;
+  padding-top: 60px;
 }
 
 .modal-overlay.open {
@@ -253,16 +256,17 @@ html, body {
   width: 100%;
   max-width: 480px;
   background: var(--bg);
-  border-top: 1px solid var(--border);
+  border: 1px solid var(--border);
+  border-radius: 8px;
   padding: 24px 24px 36px;
-  max-height: 80dvh;
+  max-height: 70dvh;
   overflow-y: auto;
-  animation: slideUp 0.22s ease;
+  animation: slideDown 0.22s ease;
 }
 
-@keyframes slideUp {
-  from { transform: translateY(24px); opacity: 0; }
-  to   { transform: translateY(0);    opacity: 1; }
+@keyframes slideDown {
+  from { transform: translateY(-24px); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
 }
 
 .modal-word {
