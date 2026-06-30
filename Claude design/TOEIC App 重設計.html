@@ -1,0 +1,1758 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+<meta name="theme-color" content="#f6f0ea"/>
+<title>多益 600 單字</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600&family=Noto+Serif+TC:wght@400;500;600&family=Noto+Sans+JP:wght@300;400;500&family=Noto+Sans+TC:wght@300;400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+
+<style>
+/* ── 全域 CSS 變數（方案 B 柔霧靜物 · 淺色） ── */
+:root {
+  --bg:          #f6f0ea;
+  --bg-deep:     #ede4d8;
+  --paper:       #ffffff;
+  --ink:         #3a2f2a;
+  --ink-soft:    #7a6a5f;
+  --ink-mute:    #b5a89b;
+  --accent:      #c77d5f;   /* 暖陶土 */
+  --accent2:     #8da08a;   /* 抹茶綠 */
+  --accent-soft: #f8e8dc;
+  --accent2-soft:#e8f0e6;
+  --line:        rgba(58,47,42,0.10);
+  --line-strong: rgba(58,47,42,0.22);
+  --correct:     #5a8a6a;
+  --correct-bg:  #eaf4ee;
+  --wrong:       #b05040;
+  --wrong-bg:    #fcecea;
+  --serif:       "Noto Serif TC", "Noto Serif JP", Georgia, serif;
+  --sans:        "Noto Sans TC", "Noto Sans JP", -apple-system, sans-serif;
+  --mono:        "IBM Plex Mono", ui-monospace, monospace;
+  --radius:      16px;
+  --radius-sm:   10px;
+  --shadow:      0 2px 4px rgba(0,0,0,0.04), 0 8px 20px -8px rgba(0,0,0,0.10);
+}
+
+[data-dark="true"] {
+  --bg:          #1f1a17;
+  --bg-deep:     #15110f;
+  --paper:       #2a2320;
+  --ink:         #f2e8de;
+  --ink-soft:    #b0a197;
+  --ink-mute:    #7a6d63;
+  --accent:      #e09575;
+  --accent2:     #a8c0a2;
+  --accent-soft: #352921;
+  --accent2-soft:#243226;
+  --line:        rgba(242,232,222,0.10);
+  --line-strong: rgba(242,232,222,0.22);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background: #d6cfc4;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--sans);
+  font-size: 15px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── 手機外框 ── */
+.phone-shell {
+  width: 390px;
+  height: 844px;
+  background: var(--bg);
+  border-radius: 50px;
+  box-shadow:
+    0 0 0 10px #1c1c1e,
+    0 0 0 11px #3a3a3c,
+    0 40px 80px -20px rgba(0,0,0,0.55),
+    0 10px 30px -10px rgba(0,0,0,0.3);
+  overflow: hidden;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  flex-shrink: 0;
+  transform-origin: center center;
+}
+
+/* Dynamic Island */
+.phone-island {
+  position: absolute;
+  top: 12px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 120px;
+  height: 34px;
+  background: #1c1c1e;
+  border-radius: 20px;
+  z-index: 100;
+  pointer-events: none;
+}
+
+/* 側邊按鈕 */
+.phone-shell::before {
+  content: '';
+  position: absolute;
+  left: -13px;
+  top: 160px;
+  width: 3px;
+  height: 36px;
+  background: #3a3a3c;
+  border-radius: 2px 0 0 2px;
+  box-shadow: 0 46px 0 #3a3a3c, 0 88px 0 #3a3a3c;
+}
+.phone-shell::after {
+  content: '';
+  position: absolute;
+  right: -13px;
+  top: 200px;
+  width: 3px;
+  height: 68px;
+  background: #3a3a3c;
+  border-radius: 0 2px 2px 0;
+}
+
+/* ── App 外框（在手機殼內） ── */
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  background: var(--bg);
+  overflow: hidden;
+  color: var(--ink);
+}
+
+/* ── 頁面切換 ── */
+.page {
+  display: none;
+  flex-direction: column;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+.page.active {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* ── 底部 Tab Bar ── */
+.tab-bar {
+  display: flex;
+  background: var(--paper);
+  border-top: 1px solid var(--line);
+  padding: 8px 0 max(16px, env(safe-area-inset-bottom));
+  position: relative;
+  z-index: 50;
+  flex-shrink: 0;
+}
+.tab-btn {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3px;
+  padding: 4px 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--ink-mute);
+  font-family: var(--sans);
+  font-size: 10px;
+  letter-spacing: .5px;
+  font-weight: 400;
+  transition: color .15s;
+}
+.tab-btn.active { color: var(--accent); font-weight: 500; }
+.tab-btn svg { flex-shrink: 0; }
+
+/* ── 頁面標題列 ── */
+.page-header {
+  padding: 56px 22px 12px;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 20;
+  border-bottom: 1px solid var(--line);
+}
+.page-title-sub { font-size: 11px; color: var(--ink-mute); letter-spacing: 2px; text-transform: uppercase; margin-bottom: 2px; }
+.page-title { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--ink); }
+
+/* ── 卡片 ── */
+.card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 16px;
+  box-shadow: var(--shadow);
+}
+
+/* ── 按鈕 ── */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 12px 20px;
+  border-radius: var(--radius-sm);
+  border: none;
+  font-family: var(--sans);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: opacity .15s, transform .1s;
+  letter-spacing: .5px;
+}
+.btn:active { transform: scale(.97); }
+.btn-primary { background: var(--accent); color: #fff; }
+.btn-secondary { background: var(--paper); border: 1px solid var(--line); color: var(--ink-soft); }
+.btn-ghost { background: transparent; border: 1px solid var(--line); color: var(--ink-soft); }
+.btn-lg { padding: 14px 28px; font-size: 15px; border-radius: var(--radius); width: 100%; }
+
+/* ── 進度環 SVG ── */
+.ring-wrap { position: relative; display: inline-flex; align-items: center; justify-content: center; }
+.ring-label { position: absolute; text-align: center; }
+
+/* ── 篩選 chips ── */
+.chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 22px 8px; scrollbar-width: none; }
+.chips::-webkit-scrollbar { display: none; }
+.chip {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-family: var(--serif);
+  white-space: nowrap;
+  cursor: pointer;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  color: var(--ink-soft);
+  transition: background .15s, color .15s;
+}
+.chip.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+
+/* ── 搜尋列 ── */
+.search-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin: 0 18px 12px;
+  padding: 10px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  color: var(--ink-mute);
+  font-size: 13px;
+}
+.search-bar input {
+  flex: 1; border: none; background: transparent; color: var(--ink);
+  font-family: var(--sans); font-size: 13px; outline: none;
+}
+.search-bar input::placeholder { color: var(--ink-mute); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   DASHBOARD 首頁
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-home {
+  overflow-y: auto;
+  padding-bottom: 8px;
+  flex: 1;
+  min-height: 0;
+}
+.home-hero {
+  margin: 16px 18px 0;
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--accent) 0%, #d4956f 60%, var(--accent2) 140%);
+  color: #fff;
+  position: relative;
+  overflow: hidden;
+}
+.home-hero::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.12);
+}
+.home-hero::after {
+  content: '';
+  position: absolute;
+  top: 30px; right: 20px;
+  width: 80px; height: 80px;
+  border-radius: 50%;
+  background: rgba(255,255,255,.08);
+}
+.hero-date { font-size: 10px; letter-spacing: 2px; opacity: .8; margin-bottom: 8px; }
+.hero-big { font-family: var(--serif); font-size: 48px; font-weight: 500; line-height: 1; }
+.hero-sub { font-size: 12px; opacity: .85; margin-top: 4px; }
+.hero-bar-wrap { margin-top: 14px; height: 5px; background: rgba(255,255,255,.25); border-radius: 3px; overflow: hidden; }
+.hero-bar-fill { height: 100%; background: #fff; border-radius: 3px; transition: width .6s ease; }
+.hero-cta {
+  display: inline-flex;
+  margin-top: 16px;
+  padding: 9px 18px;
+  background: #fff;
+  color: var(--accent);
+  border-radius: 20px;
+  font-size: 13px;
+  font-weight: 500;
+  gap: 6px;
+  align-items: center;
+  cursor: pointer;
+  border: none;
+  font-family: var(--sans);
+  letter-spacing: .3px;
+  transition: opacity .15s;
+}
+.hero-cta:hover { opacity: .9; }
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin: 14px 18px 0;
+}
+.stat-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 14px 16px;
+}
+.stat-icon {
+  width: 30px; height: 30px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  margin-bottom: 10px;
+}
+.stat-icon.green { background: var(--accent2-soft); }
+.stat-num { font-family: var(--serif); font-size: 26px; font-weight: 500; color: var(--ink); }
+.stat-label { font-size: 11px; color: var(--ink-mute); margin-top: 1px; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: 18px 22px 10px;
+}
+.section-head-title { font-family: var(--serif); font-size: 16px; font-weight: 500; color: var(--ink); }
+.section-head-link { font-size: 12px; color: var(--accent); cursor: pointer; }
+
+.task-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 18px 8px;
+  padding: 13px 14px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+  transition: background .15s;
+}
+.task-row:active { background: var(--bg-deep); }
+.task-icon-wrap {
+  width: 36px; height: 36px;
+  border-radius: 10px;
+  background: var(--accent-soft);
+  display: flex; align-items: center; justify-content: center;
+  flex-shrink: 0;
+}
+.task-icon-wrap.green { background: var(--accent2-soft); }
+.task-title { font-size: 13px; color: var(--ink); font-weight: 500; }
+.task-sub { font-size: 11px; color: var(--ink-mute); margin-top: 1px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   單字卡頁
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-card {
+  background: linear-gradient(180deg, var(--bg) 0%, var(--bg-deep) 100%);
+}
+.card-page-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 56px 22px 14px;
+}
+.card-progress-bar {
+  flex: 1; height: 6px; background: var(--accent-soft);
+  border-radius: 3px; overflow: hidden; margin: 0 14px;
+}
+.card-progress-fill { height: 100%; background: linear-gradient(90deg, var(--accent), var(--accent2)); border-radius: 3px; transition: width .4s; }
+.card-counter { font-size: 11px; color: var(--ink-soft); font-family: var(--mono); }
+
+.flashcard-area {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  padding: 0 22px;
+}
+.flashcard {
+  width: 100%;
+  aspect-ratio: 0.72;
+  background: linear-gradient(180deg, var(--paper) 0%, var(--accent-soft) 100%);
+  border-radius: 28px;
+  border: 1px solid var(--line);
+  box-shadow: 0 2px 4px rgba(0,0,0,.03), 0 24px 60px -20px rgba(0,0,0,.16);
+  display: flex;
+  flex-direction: column;
+  padding: 26px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+}
+.flashcard::before {
+  content: '';
+  position: absolute;
+  top: -40px; right: -40px;
+  width: 160px; height: 160px;
+  border-radius: 50%;
+  background: radial-gradient(circle, var(--accent-soft), transparent 70%);
+}
+.fc-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  position: relative;
+  margin-bottom: 8px;
+}
+.fc-pos-tag {
+  padding: 4px 10px; border-radius: 8px;
+  background: var(--accent-soft);
+  font-size: 11px; color: var(--accent); font-weight: 500;
+}
+.fc-front {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  position: relative;
+}
+.fc-word { font-family: var(--serif); font-size: 42px; font-weight: 500; color: var(--ink); text-align: center; letter-spacing: -.3px; }
+.fc-ipa { font-family: var(--mono); font-size: 14px; color: var(--ink-soft); }
+.fc-audio-btn {
+  width: 54px; height: 54px; border-radius: 50%;
+  background: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  box-shadow: 0 6px 18px -4px rgba(199,125,95,.5);
+  border: none; cursor: pointer;
+  margin-top: 8px;
+  transition: transform .15s;
+}
+.fc-audio-btn:active { transform: scale(.93); }
+.fc-hint { font-size: 11px; color: var(--ink-mute); letter-spacing: 1.5px; }
+
+.fc-back { flex: 1; display: flex; flex-direction: column; justify-content: flex-start; gap: 12px; position: relative; }
+.fc-zh { font-family: var(--serif); font-size: 22px; color: var(--ink); font-weight: 500; }
+.fc-example-box {
+  padding: 13px;
+  background: rgba(255,255,255,.5);
+  border-radius: 12px;
+  border: 1px solid var(--line);
+}
+.fc-example-label { font-size: 10px; color: var(--ink-mute); letter-spacing: 1.5px; margin-bottom: 4px; }
+.fc-example { font-family: var(--serif); font-size: 13px; color: var(--ink); line-height: 1.55; font-style: italic; }
+.fc-example-zh { font-size: 11px; color: var(--ink-soft); margin-top: 4px; line-height: 1.5; }
+.syn-row { display: flex; gap: 6px; flex-wrap: wrap; }
+.syn-chip {
+  font-size: 11px; padding: 3px 9px; border-radius: 8px;
+  background: var(--paper); color: var(--accent2);
+  border: 1px solid var(--line); font-family: var(--serif);
+}
+
+.rating-area { padding: 16px 22px 22px; }
+.rating-hint { font-size: 11px; color: var(--ink-mute); text-align: center; margin-bottom: 10px; letter-spacing: .5px; }
+.rating-btns { display: flex; gap: 8px; }
+.rating-btn {
+  flex: 1; padding: 13px 6px; border-radius: var(--radius); text-align: center;
+  background: var(--paper); border: 1.5px solid var(--line);
+  cursor: pointer; transition: border-color .15s, background .15s;
+}
+.rating-btn:hover { background: var(--bg-deep); }
+.rating-btn-label { font-family: var(--serif); font-size: 14px; font-weight: 500; }
+.rating-btn-sub { font-size: 9px; color: var(--ink-mute); margin-top: 2px; letter-spacing: .5px; }
+.rating-btn.new .rating-btn-label { color: var(--accent); }
+.rating-btn.shaky .rating-btn-label { color: var(--ink-soft); }
+.rating-btn.got .rating-btn-label { color: var(--accent2); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   測驗頁
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-quiz {
+  overflow-y: auto;
+  padding: 56px 22px 22px;
+  flex: 1;
+  min-height: 0;
+}
+.quiz-header {
+  display: flex; align-items: center; justify-content: space-between;
+  margin-bottom: 16px;
+}
+.quiz-prog-bar {
+  flex: 1; height: 6px; background: var(--accent-soft);
+  border-radius: 3px; overflow: hidden; margin: 0 14px;
+}
+.quiz-prog-fill { height: 100%; background: var(--accent); border-radius: 3px; transition: width .4s; }
+.quiz-q-card {
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 26px 22px;
+  margin-bottom: 18px;
+  position: relative;
+  overflow: hidden;
+  text-align: center;
+}
+.quiz-q-card::before {
+  content:'';
+  position: absolute; top:-30px; right:-30px;
+  width:110px; height:110px; border-radius:50%;
+  background: rgba(199,125,95,.08);
+}
+.quiz-q-label { font-size: 10px; color: var(--ink-mute); letter-spacing: 2px; margin-bottom: 10px; }
+.quiz-q-word { font-family: var(--serif); font-size: 32px; font-weight: 500; color: var(--ink); }
+.quiz-q-ipa { font-family: var(--mono); font-size: 12px; color: var(--ink-mute); margin-top: 6px; }
+
+.quiz-options { display: flex; flex-direction: column; gap: 8px; }
+.quiz-opt {
+  display: flex; align-items: center; gap: 14px;
+  padding: 14px 16px; border-radius: var(--radius);
+  background: var(--paper); border: 1.5px solid var(--line);
+  cursor: pointer; font-size: 14px; color: var(--ink);
+  font-family: var(--serif); text-align: left;
+  transition: background .12s, border-color .12s;
+  width: 100%;
+}
+.quiz-opt:hover:not(:disabled) { background: var(--bg-deep); border-color: var(--ink-mute); }
+.quiz-opt:disabled { cursor: default; }
+.quiz-opt-letter {
+  width: 30px; height: 30px; border-radius: 50%;
+  background: var(--accent-soft); color: var(--accent);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 12px; font-weight: 500; flex-shrink: 0;
+  font-family: var(--sans);
+}
+.quiz-opt.correct { background: var(--correct-bg); border-color: var(--correct); color: var(--correct); }
+.quiz-opt.correct .quiz-opt-letter { background: var(--correct-bg); color: var(--correct); }
+.quiz-opt.wrong { background: var(--wrong-bg); border-color: var(--wrong); color: var(--wrong); }
+.quiz-opt.wrong .quiz-opt-letter { background: var(--wrong-bg); color: var(--wrong); }
+
+.quiz-result-wrap { text-align: center; padding: 40px 0; }
+.qr-label { font-size: 11px; letter-spacing: 2px; color: var(--ink-mute); margin-bottom: 10px; }
+.qr-score { font-family: var(--serif); font-size: 64px; font-weight: 500; color: var(--ink); line-height: 1; }
+.qr-total { font-size: 20px; color: var(--ink-mute); }
+.qr-msg { font-size: 14px; color: var(--ink-soft); margin-top: 12px; }
+.qr-actions { display: flex; gap: 10px; margin-top: 32px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   單字列表頁
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-list { overflow: hidden; flex-direction: column; min-height: 0; }
+#page-list .page-header { border-bottom: none; }
+.word-list-scroll { flex: 1; overflow-y: auto; padding-bottom: 8px; }
+
+.word-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 13px 22px;
+  border-bottom: 1px solid var(--line);
+  cursor: pointer;
+  transition: background .12s;
+  -webkit-tap-highlight-color: transparent;
+}
+.word-row:active { background: var(--bg-deep); }
+.word-row-status {
+  width: 28px; height: 28px; border-radius: 8px; flex-shrink: 0;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--serif); font-size: 12px; font-weight: 500;
+  border: 1px solid var(--line);
+}
+.word-row-status.mastered { background: var(--accent-soft); border-color: var(--accent); color: var(--accent); }
+.word-row-status.unmastered { color: var(--ink-mute); }
+.word-row-body { flex: 1; min-width: 0; }
+.word-row-en { font-family: var(--serif); font-size: 16px; color: var(--ink); font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.word-row-pos { font-size: 11px; color: var(--ink-mute); font-style: italic; margin-left: 4px; }
+.word-row-zh { font-size: 12px; color: var(--ink-soft); margin-top: 2px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.word-row-arrow { color: var(--line-strong); font-size: 16px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   複習排程頁（端口預留）
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-review { flex-direction: column; overflow: hidden; min-height: 0; }
+#page-review-scroll { flex: 1; overflow-y: auto; padding-bottom: 8px; min-height: 0; }
+.review-hero {
+  margin: 16px 18px 0;
+  padding: 22px;
+  border-radius: 22px;
+  background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 140%);
+  color: #fff;
+  position: relative; overflow: hidden;
+}
+.review-hero::before { content:''; position:absolute; top:-40px;right:-40px;width:160px;height:160px;border-radius:50%;background:rgba(255,255,255,.15); }
+.review-hero::after { content:''; position:absolute; top:20px;right:20px;width:70px;height:70px;border-radius:50%;background:rgba(255,255,255,.12); }
+.review-hero-label { font-size: 10px; letter-spacing: 2px; opacity: .85; position: relative; }
+.review-due-count { font-family: var(--serif); font-size: 52px; font-weight: 500; line-height: 1; position: relative; margin-top: 6px; }
+.review-due-sub { font-size: 12px; opacity: .9; position: relative; }
+
+.schedule-row {
+  display: flex; align-items: center; gap: 14px;
+  margin: 0 18px 8px;
+  padding: 14px 16px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+.schedule-count-box {
+  width: 46px; height: 46px; border-radius: 12px;
+  background: var(--accent-soft);
+  display: flex; flex-direction: column;
+  align-items: center; justify-content: center; flex-shrink: 0;
+}
+.schedule-count-num { font-family: var(--serif); font-size: 18px; color: var(--accent); font-weight: 500; line-height: 1; }
+.schedule-count-unit { font-size: 9px; color: var(--accent); opacity: .7; }
+.schedule-label { font-family: var(--serif); font-size: 14px; color: var(--ink); font-weight: 500; }
+.schedule-sub { font-size: 11px; color: var(--ink-mute); margin-top: 2px; }
+
+/* 端口說明 badge */
+.port-badge {
+  padding: 3px 10px; border-radius: 14px;
+  background: rgba(141,160,138,.15);
+  color: var(--accent2); font-size: 10px;
+  border: 1px solid rgba(141,160,138,.3);
+  letter-spacing: .5px;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+/* 遺忘曲線 */
+.curve-card { margin: 14px 18px 18px; background: var(--paper); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px; }
+.curve-title { font-family: var(--serif); font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 6px; }
+.curve-sub { font-size: 11px; color: var(--ink-mute); margin-bottom: 12px; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   統計頁
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+#page-stats { flex-direction: column; overflow: hidden; min-height: 0; }
+#page-stats-scroll { flex: 1; overflow-y: auto; padding-bottom: 8px; min-height: 0; }
+.overall-card {
+  margin: 10px 18px 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.overall-legend { flex: 1; }
+.legend-row {
+  display: flex; align-items: center; gap: 8px;
+  margin-bottom: 5px;
+}
+.legend-dot { width: 8px; height: 8px; border-radius: 4px; flex-shrink: 0; }
+.legend-label { font-size: 12px; color: var(--ink-soft); }
+.legend-num { font-family: var(--mono); font-size: 12px; color: var(--ink); font-weight: 500; margin-left: auto; }
+
+.bar-chart-card {
+  margin: 12px 18px 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 20px;
+}
+.bar-chart-head { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 16px; }
+.bar-chart-title { font-family: var(--serif); font-size: 14px; color: var(--ink); font-weight: 500; }
+.bar-chart-total { font-size: 12px; color: var(--ink-soft); }
+.bar-chart-bars { display: flex; gap: 8px; align-items: flex-end; height: 80px; }
+.bar-col { flex: 1; display: flex; flex-direction: column; align-items: center; gap: 5px; }
+.bar-val { font-size: 9px; color: var(--ink-mute); font-family: var(--mono); }
+.bar-track { width: 100%; height: 60px; display: flex; align-items: flex-end; }
+.bar-fill { width: 100%; border-radius: 6px 6px 0 0; transition: height .5s ease; }
+.bar-day { font-size: 10px; color: var(--ink-mute); font-family: var(--serif); }
+.bar-day.today { color: var(--accent); font-weight: 500; }
+
+.heatmap-card {
+  margin: 12px 18px 20px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 18px;
+}
+.heatmap-title { font-family: var(--serif); font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 4px; }
+.heatmap-sub { font-size: 11px; color: var(--ink-mute); margin-bottom: 12px; }
+.heatmap-grid { display: grid; grid-template-columns: repeat(14, 1fr); gap: 3px; }
+.heatmap-cell { aspect-ratio: 1; border-radius: 3px; }
+.heatmap-range { display: flex; justify-content: space-between; margin-top: 8px; font-size: 9px; color: var(--ink-mute); }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Modal
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.modal-overlay {
+  display: none;
+  position: fixed; inset: 0;
+  background: rgba(0,0,0,.45);
+  z-index: 200;
+  align-items: flex-end;
+  justify-content: center;
+}
+.modal-overlay.open { display: flex; }
+.modal-sheet {
+  width: 100%;
+  max-width: 480px;
+  background: var(--paper);
+  border-radius: var(--radius) var(--radius) 0 0;
+  padding: 28px 24px max(28px, env(safe-area-inset-bottom));
+  max-height: 82dvh;
+  overflow-y: auto;
+  animation: slideUp .24s cubic-bezier(.2,.8,.3,1);
+}
+@keyframes slideUp { from { transform: translateY(40px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+.modal-handle { width: 36px; height: 4px; background: var(--line-strong); border-radius: 2px; margin: 0 auto 20px; }
+.modal-en { font-family: var(--serif); font-size: 28px; font-weight: 500; color: var(--ink); margin-bottom: 2px; }
+.modal-pos { font-size: 12px; color: var(--ink-mute); font-style: italic; margin-bottom: 14px; }
+.modal-sec-label { font-size: 10px; letter-spacing: 2px; color: var(--ink-mute); text-transform: uppercase; margin-bottom: 4px; margin-top: 14px; }
+.modal-def { font-size: 18px; font-weight: 500; color: var(--ink); line-height: 1.5; }
+.modal-syn { font-size: 13px; color: var(--ink-soft); line-height: 1.7; }
+.modal-actions { display: flex; gap: 10px; margin-top: 24px; }
+.modal-btn-close {
+  flex: 1; padding: 12px; border-radius: var(--radius-sm);
+  background: none; border: 1px solid var(--line);
+  color: var(--ink-soft); font-family: var(--sans); font-size: 13px; font-weight: 500;
+  cursor: pointer;
+}
+.modal-btn-master {
+  flex: 1; padding: 12px; border-radius: var(--radius-sm);
+  background: none; border: 1px solid var(--accent);
+  color: var(--accent); font-family: var(--sans); font-size: 13px; font-weight: 500;
+  cursor: pointer; transition: background .15s, color .15s;
+}
+.modal-btn-master.is-mastered { background: var(--accent); color: #fff; }
+
+/* ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+   Tweaks Panel
+━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ */
+.tweaks-panel {
+  display: none;
+  position: fixed;
+  bottom: 90px; right: calc(50% - 195px + 16px);
+  width: 240px;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: 0 8px 32px -8px rgba(0,0,0,.18);
+  padding: 16px;
+  z-index: 300;
+  font-family: var(--sans);
+}
+.tweaks-panel.open { display: block; }
+.tweaks-title { font-family: var(--serif); font-size: 14px; color: var(--ink); font-weight: 500; margin-bottom: 12px; }
+.tweak-row { display: flex; align-items: center; justify-content: space-between; margin-bottom: 10px; }
+.tweak-label { font-size: 13px; color: var(--ink-soft); }
+.tweak-toggle {
+  width: 44px; height: 26px; border-radius: 13px;
+  background: var(--line-strong); border: none; cursor: pointer;
+  position: relative; transition: background .2s;
+  flex-shrink: 0;
+}
+.tweak-toggle.on { background: var(--accent); }
+.tweak-toggle::after {
+  content: '';
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 20px; height: 20px;
+  border-radius: 50%; background: #fff;
+  transition: left .2s;
+  box-shadow: 0 1px 3px rgba(0,0,0,.2);
+}
+.tweak-toggle.on::after { left: 21px; }
+
+/* ── 通知 badge ── */
+.notice-box {
+  text-align: center;
+  padding: 40px 24px;
+  color: var(--ink-mute);
+  font-size: 13px;
+  line-height: 1.8;
+}
+.notice-box strong { display: block; font-size: 15px; color: var(--ink-soft); margin-bottom: 6px; }
+
+/* ── 滾動條 ── */
+::-webkit-scrollbar { width: 3px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--line-strong); border-radius: 2px; }
+</style>
+</head>
+<body>
+<div class="phone-shell">
+  <div class="phone-island"></div>
+  <div id="app">
+
+  <!-- ════════════════════════════════
+       首頁 Dashboard
+  ════════════════════════════════ -->
+  <section class="page active" id="page-home">
+    <!-- 今日英雄卡 -->
+    <div class="home-hero">
+      <div class="hero-date" id="heroDate"></div>
+      <div class="hero-big"><span id="heroMastered">0</span><span style="font-size:18px;opacity:.75"> / <span id="heroTotal">0</span></span></div>
+      <div class="hero-sub">今日已記 · 剩 <span id="heroLeft">0</span> 字達成目標</div>
+      <div class="hero-bar-wrap"><div class="hero-bar-fill" id="heroBig"></div></div>
+      <button class="hero-cta" onclick="switchPage('card')">
+        繼續學習
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- 統計格 -->
+    <div class="stats-grid">
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3c0 4-5 5-5 10a5 5 0 0010 0c0-2-1-3-2-4 0 2-1 3-2 3 1-3 0-7-1-9z"/></svg>
+        </div>
+        <div class="stat-num" id="statStreak">0</div>
+        <div class="stat-label">連續天數</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20c0-8 5-14 16-16-1 11-6 16-14 16-1 0-2-0-2 0M5 19l10-10"/></svg>
+        </div>
+        <div class="stat-num" id="statMastered">0</div>
+        <div class="stat-label">已熟記</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+        </div>
+        <div class="stat-num" id="statDue">0</div>
+        <div class="stat-label">待複習</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-icon green">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
+        </div>
+        <div class="stat-num" id="statTotal">0</div>
+        <div class="stat-label">總字數</div>
+      </div>
+    </div>
+
+    <!-- 今日課題 -->
+    <div class="section-head">
+      <div class="section-head-title">今日課題</div>
+      <div class="section-head-link"></div>
+    </div>
+    <div class="task-row" onclick="switchPage('card')">
+      <div class="task-icon-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 2h14v14"/></svg>
+      </div>
+      <div>
+        <div class="task-title">單字卡學習</div>
+        <div class="task-sub" id="taskCardSub">翻閱並自我評分</div>
+      </div>
+      <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-mute)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="task-row" onclick="switchPage('quiz')">
+      <div class="task-icon-wrap green">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent2)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 115 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="17" r="0.5" fill="var(--accent2)"/></svg>
+      </div>
+      <div>
+        <div class="task-title">四選一測驗</div>
+        <div class="task-sub">最多 10 題，測試記憶</div>
+      </div>
+      <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-mute)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+    <div class="task-row" onclick="switchPage('review')">
+      <div class="task-icon-wrap">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="var(--accent)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12a9 9 0 01-15.5 6.3L3 15M3 12a9 9 0 0115.5-6.3L21 9M21 4v5h-5M3 20v-5h5"/></svg>
+      </div>
+      <div>
+        <div class="task-title">複習排程</div>
+        <div class="task-sub" id="taskReviewSub">間隔重複，加深記憶</div>
+      </div>
+      <svg style="margin-left:auto" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="var(--ink-mute)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       單字卡頁
+  ════════════════════════════════ -->
+  <section class="page" id="page-card">
+    <div class="card-page-header">
+      <button onclick="switchPage('home')" style="background:none;border:none;cursor:pointer;padding:4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="card-progress-bar"><div class="card-progress-fill" id="cardProgFill" style="width:0%"></div></div>
+      <div class="card-counter" id="cardCounter">0/0</div>
+    </div>
+
+    <div class="flashcard-area" id="flashcardArea">
+      <!-- JS 動態渲染 -->
+    </div>
+
+    <div class="rating-area" id="ratingArea" style="display:none">
+      <div class="rating-hint">你記得這個字嗎？</div>
+      <div class="rating-btns">
+        <!-- 端口：評分 → 未來接間隔重複演算法 -->
+        <div class="rating-btn new" onclick="rateCard('new')">
+          <div class="rating-btn-label">陌生</div>
+          <div class="rating-btn-sub">再見 &lt;1m</div>
+        </div>
+        <div class="rating-btn shaky" onclick="rateCard('shaky')">
+          <div class="rating-btn-label">不熟</div>
+          <div class="rating-btn-sub">再見 10m</div>
+        </div>
+        <div class="rating-btn got" onclick="rateCard('got')">
+          <div class="rating-btn-label">熟記</div>
+          <div class="rating-btn-sub">再見 3d</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ════════════════════════════════
+       測驗頁
+  ════════════════════════════════ -->
+  <section class="page" id="page-quiz">
+    <div class="quiz-header">
+      <button onclick="switchPage('home')" style="background:none;border:none;cursor:pointer;padding:4px;">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--ink-soft)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+      </button>
+      <div class="quiz-prog-bar"><div class="quiz-prog-fill" id="quizProgFill" style="width:0%"></div></div>
+      <div style="font-size:11px;color:var(--ink-soft);font-family:var(--mono)" id="quizCounter">0/0</div>
+    </div>
+    <div id="quizContent"><!-- JS 動態渲染 --></div>
+  </section>
+
+  <!-- ════════════════════════════════
+       單字列表頁
+  ════════════════════════════════ -->
+  <section class="page" id="page-list">
+    <div class="page-header">
+      <div class="page-title-sub">TOEIC 600</div>
+      <div class="page-title">單字列表</div>
+    </div>
+    <div class="search-bar">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="var(--ink-mute)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input type="search" id="searchInput" placeholder="搜尋單字、釋義…" oninput="handleSearch()" autocomplete="off"/>
+    </div>
+    <div class="chips" id="listChips">
+      <div class="chip active" onclick="setFilter('全部',this)">全部</div>
+      <div class="chip" onclick="setFilter('A2',this)">A2</div>
+      <div class="chip" onclick="setFilter('B1',this)">B1</div>
+      <div class="chip" onclick="setFilter('常見',this)">常見</div>
+      <div class="chip" onclick="setFilter('熟記',this)">已熟記</div>
+      <div class="chip" onclick="setFilter('未記',this)">未記</div>
+    </div>
+    <div class="word-list-scroll" id="wordListScroll"></div>
+  </section>
+
+  <!-- ════════════════════════════════
+       複習排程頁（端口預留）
+  ════════════════════════════════ -->
+  <section class="page" id="page-review">
+    <div class="page-header">
+      <div class="page-title-sub">SPACED REPETITION</div>
+      <div class="page-title">複習排程</div>
+    </div>
+    <div id="page-review-scroll">
+
+    <!-- 今日到期 -->
+    <div class="review-hero">
+      <div class="review-hero-label">TODAY · 今日待複習</div>
+      <div class="review-due-count" id="reviewDueCount">—</div>
+      <div class="review-due-sub" id="reviewDueSub">載入中…</div>
+      <button class="hero-cta" style="margin-top:16px" onclick="switchPage('card')" id="reviewStartBtn">
+        開始複習
+        <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </button>
+    </div>
+
+    <!-- 端口說明 -->
+    <div style="margin:14px 18px 4px;padding:12px 14px;border-radius:12px;background:var(--accent2-soft);border:1px solid rgba(141,160,138,.25);font-size:12px;color:var(--ink-soft);line-height:1.6;">
+      🌱 <strong style="color:var(--accent2)">功能開發中</strong><br/>
+      間隔重複演算法（SM-2）端口已預留，評分資料會在此連接，自動計算下次複習時間。
+    </div>
+
+    <div class="section-head" style="padding-top:14px;">
+      <div class="section-head-title">預估排程</div>
+      <div class="port-badge">API 端口預留</div>
+    </div>
+
+    <div id="scheduleList"></div>
+
+    <!-- 遺忘曲線 -->
+    <div class="curve-card">
+      <div class="curve-title">遺忘曲線原理</div>
+      <div class="curve-sub">系統將依此為你安排最佳複習時機</div>
+      <svg width="100%" height="110" viewBox="0 0 280 110">
+        <defs>
+          <linearGradient id="cg" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="var(--accent)" stop-opacity=".25"/>
+            <stop offset="100%" stop-color="var(--accent)" stop-opacity="0"/>
+          </linearGradient>
+        </defs>
+        <line x1="0" x2="280" y1="30" y2="30" stroke="var(--line)" stroke-dasharray="2 3"/>
+        <line x1="0" x2="280" y1="60" y2="60" stroke="var(--line)" stroke-dasharray="2 3"/>
+        <line x1="0" x2="280" y1="90" y2="90" stroke="var(--line)" stroke-dasharray="2 3"/>
+        <path d="M0,12 Q30,48 70,68 T140,88 T280,100 L280,110 L0,110 Z" fill="url(#cg)"/>
+        <path d="M0,12 Q30,48 70,68 T140,88 T280,100" stroke="var(--accent)" stroke-width="1.8" fill="none"/>
+        <circle cx="0" cy="12" r="3.5" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.8"/>
+        <circle cx="70" cy="68" r="3.5" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.8"/>
+        <circle cx="140" cy="88" r="3.5" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.8"/>
+        <circle cx="210" cy="97" r="3.5" fill="var(--paper)" stroke="var(--accent)" stroke-width="1.8"/>
+        <text x="0" y="110" font-size="8" fill="var(--ink-mute)" font-family="monospace">0</text>
+        <text x="68" y="110" font-size="8" fill="var(--ink-mute)" font-family="monospace">1d</text>
+        <text x="138" y="110" font-size="8" fill="var(--ink-mute)" font-family="monospace">3d</text>
+        <text x="208" y="110" font-size="8" fill="var(--ink-mute)" font-family="monospace">7d</text>
+      </svg>
+    </div>
+    </div><!-- /page-review-scroll -->
+  </section>
+
+  <!-- ════════════════════════════════
+       統計頁
+  ════════════════════════════════ -->
+  <section class="page" id="page-stats">
+    <div class="page-header">
+      <div class="page-title-sub">STATISTICS</div>
+      <div class="page-title">學習統計</div>
+    </div>
+    <div id="page-stats-scroll">
+
+    <!-- 整體進度 -->
+    <div class="overall-card">
+      <div class="ring-wrap" id="overallRing"><!-- SVG 由 JS 注入 --></div>
+      <div class="overall-legend">
+        <div style="font-family:var(--serif);font-size:13px;color:var(--ink);font-weight:500;margin-bottom:10px">600 字進度</div>
+        <div class="legend-row"><div class="legend-dot" style="background:var(--accent2)"></div><div class="legend-label">熟記</div><div class="legend-num" id="lgMastered">0</div></div>
+        <div class="legend-row"><div class="legend-dot" style="background:var(--accent)"></div><div class="legend-label">學習中</div><div class="legend-num" id="lgLearning">0</div></div>
+        <div class="legend-row"><div class="legend-dot" style="background:var(--line-strong)"></div><div class="legend-label">未學</div><div class="legend-num" id="lgNew">0</div></div>
+      </div>
+    </div>
+
+    <!-- 週長條 -->
+    <div class="bar-chart-card">
+      <div class="bar-chart-head">
+        <div class="bar-chart-title">本週學習次數</div>
+        <div class="bar-chart-total" id="weekTotal">— 次</div>
+      </div>
+      <div class="bar-chart-bars" id="weekBars"></div>
+    </div>
+
+    <!-- 熱圖 -->
+    <div class="heatmap-card">
+      <div class="heatmap-title">學習軌跡</div>
+      <div class="heatmap-sub">近 8 週每日記錄單字次數</div>
+      <div class="heatmap-grid" id="heatmapGrid"></div>
+      <div class="heatmap-range"><span>8 週前</span><span>今日</span></div>
+    </div>
+    </div><!-- /page-stats-scroll -->
+  </section>
+
+  <!-- ════════════════════════════════
+       底部 Tab Bar
+  ════════════════════════════════ -->
+  <nav class="tab-bar" id="tabBar">
+    <button class="tab-btn active" id="tb-home" onclick="switchPage('home')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7v9a1 1 0 01-1 1h-5v-6h-6v6H4a1 1 0 01-1-1v-9z"/></svg>
+      今日
+    </button>
+    <button class="tab-btn" id="tb-card" onclick="switchPage('card')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="6" width="14" height="14" rx="2"/><path d="M7 2h14v14"/></svg>
+      單字卡
+    </button>
+    <button class="tab-btn" id="tb-quiz" onclick="switchPage('quiz')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M9.5 9a2.5 2.5 0 115 0c0 1.5-2.5 2-2.5 3.5"/><circle cx="12" cy="17" r="0.5" fill="currentColor"/></svg>
+      測驗
+    </button>
+    <button class="tab-btn" id="tb-list" onclick="switchPage('list')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg>
+      單字
+    </button>
+    <button class="tab-btn" id="tb-stats" onclick="switchPage('stats')">
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V10M10 20V4M16 20v-8M22 20H2"/></svg>
+      統計
+    </button>
+  </nav>
+  </div><!-- /#app -->
+</div><!-- /.phone-shell -->
+
+<!-- ════════════════════════════════
+     單字 Modal
+════════════════════════════════ -->
+<div class="modal-overlay" id="modalOverlay" onclick="handleOverlayClick(event)">
+  <div class="modal-sheet" id="modalSheet">
+    <div class="modal-handle"></div>
+    <div class="modal-en" id="modalEn"></div>
+    <div class="modal-pos" id="modalPos"></div>
+    <div class="modal-sec-label">中文定義</div>
+    <div class="modal-def" id="modalDef"></div>
+    <div class="modal-sec-label" id="modalSynLabel" style="display:none">同義詞</div>
+    <div class="modal-syn" id="modalSyn"></div>
+    <div class="modal-sec-label" id="modalAntLabel" style="display:none">反義詞</div>
+    <div class="modal-syn" id="modalAnt"></div>
+    <div class="modal-actions">
+      <button class="modal-btn-close" onclick="closeModal()">關　閉</button>
+      <button class="modal-btn-master" id="modalMasterBtn" onclick="toggleMastered()">標記已背過</button>
+    </div>
+  </div>
+</div>
+
+<!-- Tweaks Panel -->
+<div class="tweaks-panel" id="tweaksPanel">
+  <div class="tweaks-title">Tweaks</div>
+  <div class="tweak-row">
+    <span class="tweak-label">深色模式</span>
+    <button class="tweak-toggle" id="darkToggle" onclick="toggleDark()"></button>
+  </div>
+</div>
+
+/* 資料 */
+<script src="data-real.js"></script>
+<script>
+// 手機外框自動縮放
+function scalePhone() {
+  const shell = document.querySelector('.phone-shell');
+  if (!shell) return;
+  const scaleX = window.innerWidth / (390 + 30);
+  const scaleY = window.innerHeight / (844 + 30);
+  const scale  = Math.min(scaleX, scaleY, 1);
+  shell.style.transform = `scale(${scale})`;
+}
+scalePhone();
+window.addEventListener('resize', scalePhone);
+/* ═══════════════════════════════════════════════
+   APP.JS — 保留所有原邏輯，新增頁面與端口
+═══════════════════════════════════════════════ */
+
+const LS_KEY        = 'toeic_mastered';
+const LS_DARK       = 'toeic_dark';
+const LS_STREAK     = 'toeic_streak';
+const LS_LAST_OPEN  = 'toeic_last_open';
+const LS_WEEK       = 'toeic_week_activity';
+const LS_HEATMAP    = 'toeic_heatmap';
+const LS_CARD_RATINGS = 'toeic_card_ratings';  // 端口：間隔重複評分儲存
+
+let words        = [];
+let activeFilter = '全部';
+let searchQuery  = '';
+let activeWordId = null;
+let currentPage  = 'home';
+
+/* ── 單字卡狀態 ── */
+let cardQueue    = [];
+let cardIndex    = 0;
+let cardFlipped  = false;
+
+/* ── 測驗狀態（保留原邏輯）── */
+let quizQuestions = [];
+let quizIndex     = 0;
+let quizScore     = 0;
+let quizLocked    = false;
+
+/* ═══ 初始化 ═══ */
+function bootstrap() {
+  if (typeof WORDS === 'undefined' || !Array.isArray(WORDS)) {
+    document.getElementById('page-home').innerHTML = '<div class="notice-box"><strong>資料載入失敗</strong>請確認 data-real.js 已正確載入</div>';
+    return;
+  }
+  words = WORDS.map(w => ({ ...w }));
+  loadMastered();
+  loadDarkMode();
+  updateStreak();
+  renderHome();
+  renderSchedule();
+
+  // 延遲載入較重的頁面，讓首頁先顯示
+  setTimeout(() => { renderWordList(); }, 100);
+  setTimeout(() => { renderStats(); }, 200);
+
+  // Tweaks 協議
+  window.addEventListener('message', e => {
+    if (e.data?.type === '__activate_edit_mode')   document.getElementById('tweaksPanel').classList.add('open');
+    if (e.data?.type === '__deactivate_edit_mode') document.getElementById('tweaksPanel').classList.remove('open');
+  });
+  window.parent.postMessage({ type: '__edit_mode_available' }, '*');
+}
+
+/* ═══ localStorage ═══ */
+function loadMastered() {
+  try {
+    const saved = JSON.parse(localStorage.getItem(LS_KEY) || '{}');
+    words.forEach(w => { if (saved[w.id] !== undefined) w.mastered = saved[w.id]; });
+  } catch(_) {}
+}
+function saveMastered() {
+  const d = {};
+  words.forEach(w => { if (w.mastered) d[w.id] = true; });
+  localStorage.setItem(LS_KEY, JSON.stringify(d));
+}
+
+function loadDarkMode() {
+  const dark = localStorage.getItem(LS_DARK) === 'true';
+  document.documentElement.setAttribute('data-dark', dark);
+  document.getElementById('darkToggle').classList.toggle('on', dark);
+}
+function toggleDark() {
+  const isDark = document.documentElement.getAttribute('data-dark') === 'true';
+  const next = !isDark;
+  document.documentElement.setAttribute('data-dark', next);
+  localStorage.setItem(LS_DARK, next);
+  document.getElementById('darkToggle').classList.toggle('on', next);
+}
+
+/* ═══ Streak（連續天數）═══ */
+function updateStreak() {
+  const today = new Date().toDateString();
+  const lastOpen = localStorage.getItem(LS_LAST_OPEN);
+  let streak = parseInt(localStorage.getItem(LS_STREAK) || '0', 10);
+
+  if (lastOpen === today) { /* 當天已計算 */ }
+  else if (lastOpen === new Date(Date.now() - 86400000).toDateString()) {
+    streak += 1;
+    localStorage.setItem(LS_STREAK, streak);
+  } else if (!lastOpen) {
+    streak = 1;
+    localStorage.setItem(LS_STREAK, streak);
+  } else {
+    streak = 1;
+    localStorage.setItem(LS_STREAK, streak);
+  }
+  localStorage.setItem(LS_LAST_OPEN, today);
+
+  // 週活動紀錄
+  try {
+    const week = JSON.parse(localStorage.getItem(LS_WEEK) || '{}');
+    week[today] = (week[today] || 0) + 1;
+    localStorage.setItem(LS_WEEK, JSON.stringify(week));
+  } catch(_) {}
+}
+
+function getStreak() {
+  return parseInt(localStorage.getItem(LS_STREAK) || '0', 10);
+}
+
+/* ═══ 頁面切換 ═══ */
+function switchPage(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+  document.getElementById('page-' + page).classList.add('active');
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+  const tb = document.getElementById('tb-' + page);
+  if (tb) tb.classList.add('active');
+
+  // Tab bar 在單字卡頁隱藏
+  document.getElementById('tabBar').style.display = page === 'card' ? 'none' : '';
+
+  currentPage = page;
+  if (page === 'quiz') startQuiz();
+  if (page === 'card') startCardMode();
+  if (page === 'stats') setTimeout(() => renderStats(), 0);
+  if (page === 'list') setTimeout(() => renderWordList(), 0);
+}
+
+/* ═══ 首頁 Dashboard ═══ */
+function renderHome() {
+  const total    = words.length;
+  const mastered = words.filter(w => w.mastered).length;
+  const pct      = total ? Math.round(mastered / total * 100) : 0;
+  const goal     = Math.min(20, total - mastered);
+  const left     = Math.max(0, goal - mastered);
+
+  const now = new Date();
+  const dateStr = now.toLocaleDateString('zh-TW', { month: 'long', day: 'numeric', weekday: 'short' });
+  document.getElementById('heroDate').textContent = dateStr;
+  document.getElementById('heroMastered').textContent = mastered;
+  document.getElementById('heroTotal').textContent = total;
+  document.getElementById('heroLeft').textContent = left;
+  document.getElementById('heroBig').style.width = pct + '%';
+
+  document.getElementById('statStreak').textContent = getStreak();
+  document.getElementById('statMastered').textContent = mastered;
+  document.getElementById('statDue').textContent = computeDueCount();
+  document.getElementById('statTotal').textContent = total;
+
+  document.getElementById('taskCardSub').textContent = `${total - mastered} 字尚未熟記`;
+}
+
+/* ═══ 單字卡模式 ═══ */
+function startCardMode() {
+  // 從未熟記的字裡抽 20 張（端口：未來可換成間隔重複演算法回傳的佇列）
+  const pool = shuffle(words.filter(w => !w.mastered)).slice(0, 20);
+  if (!pool.length) {
+    document.getElementById('flashcardArea').innerHTML = `
+      <div style="text-align:center;padding:40px 22px;color:var(--ink-mute)">
+        <div style="font-size:40px;margin-bottom:14px">🎉</div>
+        <div style="font-family:var(--serif);font-size:20px;color:var(--ink);margin-bottom:6px">全部熟記！</div>
+        <div style="font-size:13px">你已記完所有單字。可在列表中取消標記再練習。</div>
+      </div>`;
+    document.getElementById('ratingArea').style.display = 'none';
+    document.getElementById('cardProgFill').style.width = '100%';
+    document.getElementById('cardCounter').textContent = '完成';
+    return;
+  }
+  cardQueue   = pool;
+  cardIndex   = 0;
+  cardFlipped = false;
+  renderCard();
+}
+
+function renderCard() {
+  if (cardIndex >= cardQueue.length) {
+    showCardFinish();
+    return;
+  }
+  const w = cardQueue[cardIndex];
+  const pct = cardQueue.length ? Math.round((cardIndex / cardQueue.length) * 100) : 0;
+  document.getElementById('cardProgFill').style.width = pct + '%';
+  document.getElementById('cardCounter').textContent = `${cardIndex + 1}/${cardQueue.length}`;
+  cardFlipped = false;
+  document.getElementById('ratingArea').style.display = 'none';
+
+  const hasSyn = w.synonyms && w.synonyms.trim();
+  const hasAnt = w.antonyms && w.antonyms.trim();
+
+  document.getElementById('flashcardArea').innerHTML = `
+    <div class="flashcard" id="theCard" onclick="flipCard()">
+      <div class="fc-meta">
+        <div class="fc-pos-tag">${escHtml(w.pos || 'word')}</div>
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="${w.mastered ? 'var(--accent)' : 'none'}" stroke="var(--accent)" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M6 3h12v18l-6-4-6 4V3z"/></svg>
+      </div>
+      <div class="fc-front" id="fcFront">
+        <div class="fc-word">${escHtml(w.word)}</div>
+        <div class="fc-ipa" id="fcIpa"></div>
+        <button class="fc-audio-btn" onclick="speakWord(event,'${escHtml(w.word)}')">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5 9h3l5-4v14l-5-4H5V9z"/><path d="M16 8.5a4 4 0 010 7"/></svg>
+        </button>
+        <div class="fc-hint">點擊翻面</div>
+      </div>
+      <div class="fc-back" id="fcBack" style="display:none">
+        <div style="font-family:var(--mono);font-size:13px;color:var(--ink-mute)">${escHtml(w.pos || '')} ${escHtml(w.word)}</div>
+        <div class="fc-zh">${escHtml(w.definition)}</div>
+        <div class="fc-example-box">
+          <div class="fc-example-label">TOEIC 情境例句</div>
+          <div class="fc-example" id="fcExample" style="color:var(--ink-mute);font-style:normal;font-size:11px">（例句端口：可從 API 載入）</div>
+        </div>
+        ${hasSyn ? `<div>
+          <div style="font-size:10px;color:var(--ink-mute);letter-spacing:1.5px;margin-bottom:4px">同義詞</div>
+          <div class="syn-row">${w.synonyms.split(',').slice(0,4).map(s=>`<span class="syn-chip">${escHtml(s.trim())}</span>`).join('')}</div>
+        </div>` : ''}
+        ${hasAnt ? `<div>
+          <div style="font-size:10px;color:var(--ink-mute);letter-spacing:1.5px;margin-bottom:4px">反義詞</div>
+          <div class="syn-row">${w.antonyms.split(',').slice(0,4).map(s=>`<span class="syn-chip" style="color:var(--accent)">${escHtml(s.trim())}</span>`).join('')}</div>
+        </div>` : ''}
+      </div>
+    </div>`;
+}
+
+function flipCard() {
+  if (cardFlipped) return;
+  cardFlipped = true;
+  document.getElementById('fcFront').style.display = 'none';
+  document.getElementById('fcBack').style.display  = 'flex';
+  document.getElementById('ratingArea').style.display = '';
+}
+
+/* 端口：間隔重複演算法 ── 目前只做簡單記錄
+   未來：SM-2 演算法根據 rating + easeFactor 計算下次複習時間
+   資料儲存在 LS_CARD_RATINGS = { wordId: { rating, due, ef, interval } }
+*/
+function rateCard(rating) {
+  const w = cardQueue[cardIndex];
+  if (!w) return;
+
+  // 儲存評分（端口 → 未來接演算法）
+  try {
+    const ratings = JSON.parse(localStorage.getItem(LS_CARD_RATINGS) || '{}');
+    ratings[w.id] = { rating, ratedAt: Date.now() };
+    localStorage.setItem(LS_CARD_RATINGS, JSON.stringify(ratings));
+  } catch(_) {}
+
+  // 若評分為「熟記」則同步標記 mastered
+  if (rating === 'got') {
+    w.mastered = true;
+    const idx = words.findIndex(x => x.id === w.id);
+    if (idx >= 0) words[idx].mastered = true;
+    saveMastered();
+  }
+
+  // 週活動 +1
+  try {
+    const today = new Date().toDateString();
+    const week  = JSON.parse(localStorage.getItem(LS_WEEK) || '{}');
+    week[today] = (week[today] || 0) + 1;
+    localStorage.setItem(LS_WEEK, JSON.stringify(week));
+  } catch(_) {}
+
+  cardIndex++;
+  renderCard();
+}
+
+function showCardFinish() {
+  const mastered = cardQueue.filter(w => w.mastered).length;
+  document.getElementById('flashcardArea').innerHTML = `
+    <div style="text-align:center;padding:40px 22px;width:100%">
+      <div style="font-size:44px;margin-bottom:16px">✨</div>
+      <div style="font-family:var(--serif);font-size:22px;color:var(--ink);font-weight:500;margin-bottom:6px">本輪完成！</div>
+      <div style="font-size:13px;color:var(--ink-soft);margin-bottom:28px">本次標記熟記 ${mastered} 個字</div>
+      <button class="btn btn-primary btn-lg" onclick="startCardMode()">再練一輪</button>
+      <div style="height:10px"></div>
+      <button class="btn btn-secondary btn-lg" onclick="switchPage('home')">回首頁</button>
+    </div>`;
+  document.getElementById('ratingArea').style.display = 'none';
+  document.getElementById('cardProgFill').style.width = '100%';
+  document.getElementById('cardCounter').textContent = '完成';
+}
+
+/* ─── 發音端口（Web Speech API）── */
+function speakWord(e, word) {
+  e.stopPropagation();
+  if (!('speechSynthesis' in window)) return;
+  const utt = new SpeechSynthesisUtterance(word);
+  utt.lang = 'en-US';
+  utt.rate = 0.85;
+  speechSynthesis.speak(utt);
+}
+
+/* ═══ 測驗（保留原邏輯）═══ */
+function startQuiz() {
+  const unmastered = words.filter(w => !w.mastered);
+  const el = document.getElementById('quizContent');
+  if (unmastered.length < 4) {
+    el.innerHTML = `<div class="notice-box"><strong>單字不足</strong>未背過的單字少於 4 個，<br>請先取消部分「已背過」或新增更多字。</div>`;
+    return;
+  }
+  quizQuestions = shuffle([...unmastered]).slice(0, Math.min(10, unmastered.length));
+  quizIndex = 0; quizScore = 0; quizLocked = false;
+  renderQuizQ();
+}
+
+function renderQuizQ() {
+  if (quizIndex >= quizQuestions.length) { renderQuizResult(); return; }
+  const q = quizQuestions[quizIndex];
+  const others = words.filter(w => w.id !== q.id).map(w => w.definition);
+  const opts   = shuffle([q.definition, ...shuffle(others).slice(0, 3)]);
+  const pct    = Math.round((quizIndex / quizQuestions.length) * 100);
+
+  document.getElementById('quizProgFill').style.width = pct + '%';
+  document.getElementById('quizCounter').textContent = `${quizIndex + 1}/${quizQuestions.length}`;
+
+  document.getElementById('quizContent').innerHTML = `
+    <div class="quiz-q-card">
+      <div class="quiz-q-label">選出正確的中文定義</div>
+      <div class="quiz-q-word">${escHtml(q.word)}</div>
+      ${q.pos ? `<div class="quiz-q-ipa">${escHtml(q.pos)}</div>` : ''}
+    </div>
+    <div class="quiz-options">
+      ${opts.map((opt, i) => `
+        <button class="quiz-opt" data-opt="${escAttr(opt)}" onclick="selectOpt(this,'${escAttr(q.definition)}')">
+          <div class="quiz-opt-letter">${'ABCD'[i]}</div>
+          ${escHtml(opt)}
+        </button>`).join('')}
+    </div>`;
+  quizLocked = false;
+}
+
+function selectOpt(btn, correct) {
+  if (quizLocked) return;
+  quizLocked = true;
+  document.querySelectorAll('.quiz-opt').forEach(b => b.disabled = true);
+  const chosen = btn.getAttribute('data-opt');
+  if (chosen === correct) { btn.classList.add('correct'); quizScore++; }
+  else {
+    btn.classList.add('wrong');
+    document.querySelectorAll('.quiz-opt').forEach(b => { if (b.getAttribute('data-opt') === correct) b.classList.add('correct'); });
+  }
+  setTimeout(() => { quizIndex++; renderQuizQ(); }, 1100);
+}
+
+function renderQuizResult() {
+  const pct = Math.round(quizScore / quizQuestions.length * 100);
+  const msg = pct === 100 ? '完美！全部答對！' : pct >= 70 ? '答得不錯，繼續加油！' : '再接再厲，多練習幾次！';
+  document.getElementById('quizProgFill').style.width = '100%';
+  document.getElementById('quizCounter').textContent = '完成';
+  document.getElementById('quizContent').innerHTML = `
+    <div class="quiz-result-wrap">
+      <div class="qr-label">本次得分</div>
+      <div class="qr-score">${quizScore}<span class="qr-total"> / ${quizQuestions.length}</span></div>
+      <div class="qr-msg">${msg}（正確率 ${pct}%）</div>
+      <div class="qr-actions">
+        <button class="btn btn-secondary" style="flex:1" onclick="switchPage('home')">回首頁</button>
+        <button class="btn btn-primary" style="flex:1" onclick="startQuiz()">再挑戰</button>
+      </div>
+    </div>`;
+}
+
+/* ═══ 單字列表（分批載入，避免 600 筆一次塞入 DOM）═══ */
+const LIST_PAGE_SIZE = 40;  // 每批渲染筆數
+let filteredList  = [];     // 目前篩選後的完整陣列
+let listRendered  = 0;      // 已渲染到第幾筆
+let listObserver  = null;   // IntersectionObserver（偵測捲到底）
+
+function setFilter(cat, el) {
+  activeFilter = cat;
+  document.querySelectorAll('#listChips .chip').forEach(c => c.classList.remove('active'));
+  if (el) el.classList.add('active');
+  renderWordList();
+}
+
+function handleSearch() {
+  searchQuery = document.getElementById('searchInput').value.toLowerCase();
+  renderWordList();
+}
+
+function buildFilteredList() {
+  let list = words;
+  if (activeFilter === 'A2')   list = list.filter(w => w.category === 'A2');
+  else if (activeFilter === 'B1')   list = list.filter(w => w.category === 'B1');
+  else if (activeFilter === '常見') list = list.filter(w => w.category === '常見');
+  else if (activeFilter === '熟記') list = list.filter(w => w.mastered);
+  else if (activeFilter === '未記') list = list.filter(w => !w.mastered);
+  if (searchQuery) {
+    list = list.filter(w =>
+      w.word.toLowerCase().includes(searchQuery) ||
+      w.definition.toLowerCase().includes(searchQuery)
+    );
+  }
+  return list;
+}
+
+function wordRowHTML(w) {
+  return `<div class="word-row" onclick="openModal(${w.id})">
+    <div class="word-row-status ${w.mastered ? 'mastered' : 'unmastered'}">${w.mastered ? '✓' : ''}</div>
+    <div class="word-row-body">
+      <div class="word-row-en">${escHtml(w.word)}<span class="word-row-pos">${escHtml(w.pos || '')}</span></div>
+      <div class="word-row-zh">${escHtml(w.definition)}</div>
+    </div>
+    <span class="word-row-arrow">›</span>
+  </div>`;
+}
+
+function renderWordList() {
+  const scroll = document.getElementById('wordListScroll');
+
+  // 清除舊的 observer
+  if (listObserver) { listObserver.disconnect(); listObserver = null; }
+
+  filteredList = buildFilteredList();
+  listRendered = 0;
+
+  if (!filteredList.length) {
+    scroll.innerHTML = '<div class="notice-box"><strong>沒有符合條件的單字</strong></div>';
+    return;
+  }
+
+  // 第一批
+  const firstBatch = filteredList.slice(0, LIST_PAGE_SIZE);
+  scroll.innerHTML = firstBatch.map(wordRowHTML).join('');
+  listRendered = firstBatch.length;
+
+  if (listRendered >= filteredList.length) return; // 不到 40 筆不需要 observer
+
+  // 加入 sentinel 觸發節點
+  const sentinel = document.createElement('div');
+  sentinel.id = 'list-sentinel';
+  sentinel.style.height = '1px';
+  scroll.appendChild(sentinel);
+
+  listObserver = new IntersectionObserver(entries => {
+    if (!entries[0].isIntersecting) return;
+    // 載入下一批
+    const nextBatch = filteredList.slice(listRendered, listRendered + LIST_PAGE_SIZE);
+    const frag = document.createDocumentFragment();
+    nextBatch.forEach(w => {
+      const div = document.createElement('div');
+      div.innerHTML = wordRowHTML(w);
+      frag.appendChild(div.firstElementChild);
+    });
+    sentinel.before(frag);
+    listRendered += nextBatch.length;
+    if (listRendered >= filteredList.length) {
+      listObserver.disconnect();
+      listObserver = null;
+      sentinel.remove();
+    }
+  }, { root: scroll, threshold: 0 });
+
+  listObserver.observe(sentinel);
+}
+
+/* ═══ Modal ═══ */
+function openModal(id) {
+  const w = words.find(x => x.id === id);
+  if (!w) return;
+  activeWordId = id;
+  document.getElementById('modalEn').textContent  = w.word;
+  document.getElementById('modalPos').textContent  = w.pos || '';
+  document.getElementById('modalDef').textContent  = w.definition;
+  const synEl = document.getElementById('modalSyn');
+  const antEl = document.getElementById('modalAnt');
+  synEl.textContent = w.synonyms || '';
+  antEl.textContent = w.antonyms || '';
+  document.getElementById('modalSynLabel').style.display = w.synonyms ? '' : 'none';
+  document.getElementById('modalAntLabel').style.display = w.antonyms ? '' : 'none';
+  updateModalBtn(w.mastered);
+  document.getElementById('modalOverlay').classList.add('open');
+}
+function closeModal() {
+  document.getElementById('modalOverlay').classList.remove('open');
+  activeWordId = null;
+}
+function handleOverlayClick(e) {
+  if (e.target === document.getElementById('modalOverlay')) closeModal();
+}
+function updateModalBtn(mastered) {
+  const btn = document.getElementById('modalMasterBtn');
+  btn.textContent = mastered ? '✓ 已熟記（點擊取消）' : '標記為已背過';
+  btn.classList.toggle('is-mastered', mastered);
+}
+function toggleMastered() {
+  const w = words.find(x => x.id === activeWordId);
+  if (!w) return;
+  w.mastered = !w.mastered;
+  saveMastered();
+  renderHome();
+  renderWordList();
+  renderStats();
+  updateModalBtn(w.mastered);
+}
+
+/* ═══ 複習排程（端口）═══ */
+function computeDueCount() {
+  // 端口：SM-2 計算到期字數
+  // 目前：回傳所有已評分但未熟記的字
+  try {
+    const ratings = JSON.parse(localStorage.getItem(LS_CARD_RATINGS) || '{}');
+    return Object.keys(ratings).filter(id => {
+      const r = ratings[id];
+      return r.rating !== 'got';
+    }).length;
+  } catch(_) { return 0; }
+}
+
+function renderSchedule() {
+  const dueCount = computeDueCount();
+  document.getElementById('reviewDueCount').textContent = dueCount + ' 字';
+  document.getElementById('reviewDueSub').textContent   = dueCount > 0 ? `約需 ${Math.ceil(dueCount * 0.5)} 分鐘` : '今日沒有到期的複習';
+  document.getElementById('statDue').textContent = dueCount;
+
+  // 模擬排程（端口：未來由 SM-2 計算 interval）
+  const schedule = [
+    { label: '明天', count: 8,  interval: '1d' },
+    { label: '後天', count: 15, interval: '3d' },
+    { label: '4 天後', count: 22, interval: '7d' },
+    { label: '8 天後', count: 34, interval: '14d' },
+  ];
+  document.getElementById('scheduleList').innerHTML = schedule.map(r => `
+    <div class="schedule-row">
+      <div class="schedule-count-box">
+        <div class="schedule-count-num">${r.count}</div>
+        <div class="schedule-count-unit">字</div>
+      </div>
+      <div style="flex:1">
+        <div class="schedule-label">${r.label}</div>
+        <div class="schedule-sub">間隔 ${r.interval} · 依遺忘曲線排程</div>
+      </div>
+      <div class="port-badge">端口</div>
+    </div>`).join('');
+}
+
+/* ═══ 統計頁 ═══ */
+function renderStats() {
+  const total    = words.length;
+  const mastered = words.filter(w => w.mastered).length;
+  const learning = 0; // 端口：SM-2 評分中的字
+  const newWords = total - mastered - learning;
+  const pct = total ? mastered / total : 0;
+
+  document.getElementById('lgMastered').textContent = mastered;
+  document.getElementById('lgLearning').textContent = learning;
+  document.getElementById('lgNew').textContent      = newWords;
+
+  // 進度環
+  const size = 88, stroke = 5, r = (size - stroke) / 2;
+  const c = 2 * Math.PI * r;
+  document.getElementById('overallRing').innerHTML = `
+    <div class="ring-wrap">
+      <svg width="${size}" height="${size}" style="transform:rotate(-90deg)">
+        <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--line)" stroke-width="${stroke}"/>
+        <circle cx="${size/2}" cy="${size/2}" r="${r}" fill="none" stroke="var(--accent2)" stroke-width="${stroke}"
+          stroke-linecap="round" stroke-dasharray="${c}" stroke-dashoffset="${c * (1 - pct)}"/>
+      </svg>
+      <div class="ring-label" style="font-family:var(--serif);font-size:16px;font-weight:500;color:var(--ink)">
+        ${Math.round(pct * 100)}%
+        <div style="font-size:9px;color:var(--ink-mute);letter-spacing:.5px">DONE</div>
+      </div>
+    </div>`;
+
+  // 週活動長條
+  const week = (() => { try { return JSON.parse(localStorage.getItem(LS_WEEK) || '{}'); } catch(_) { return {}; } })();
+  const days = ['一','二','三','四','五','六','日'];
+  const today = new Date();
+  const bars = Array.from({ length: 7 }, (_, i) => {
+    const d = new Date(today); d.setDate(today.getDate() - (6 - i));
+    const count = week[d.toDateString()] || 0;
+    return { day: days[d.getDay() === 0 ? 6 : d.getDay() - 1], count, isToday: i === 6 };
+  });
+  const maxCount = Math.max(...bars.map(b => b.count), 1);
+  const weekTotalCount = bars.reduce((s, b) => s + b.count, 0);
+  document.getElementById('weekTotal').textContent = weekTotalCount + ' 次';
+  document.getElementById('weekBars').innerHTML = bars.map(b => `
+    <div class="bar-col">
+      <div class="bar-val">${b.count || ''}</div>
+      <div class="bar-track">
+        <div class="bar-fill" style="height:${Math.max(4, (b.count/maxCount)*60)}px;background:${b.isToday ? 'linear-gradient(180deg,var(--accent),var(--accent2))' : 'var(--accent2)90'}"></div>
+      </div>
+      <div class="bar-day ${b.isToday ? 'today' : ''}">${b.day}</div>
+    </div>`).join('');
+
+  // 熱圖
+  const heatmap = (() => { try { return JSON.parse(localStorage.getItem(LS_WEEK) || '{}'); } catch(_) { return {}; } })();
+  document.getElementById('heatmapGrid').innerHTML = Array.from({ length: 56 }, (_, i) => {
+    const d = new Date(today); d.setDate(today.getDate() - (55 - i));
+    const v = heatmap[d.toDateString()] || 0;
+    const opacity = v === 0 ? '' : v < 3 ? '40' : v < 8 ? '70' : '';
+    const bg = v === 0 ? 'var(--line)' : `var(--accent)${opacity}`;
+    return `<div class="heatmap-cell" style="background:${bg}"></div>`;
+  }).join('');
+}
+
+/* ═══ 工具 ═══ */
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+function escHtml(str) {
+  return String(str||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+}
+function escAttr(str) {
+  return String(str||'').replace(/'/g,'&#39;').replace(/"/g,'&quot;');
+}
+
+bootstrap();
+</script>
+</body>
+</html>
